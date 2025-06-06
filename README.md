@@ -4,6 +4,7 @@ This is a simple command-line To-Do List application built using Java. It allows
 - ✅ Add tasks with deadlines
 - 🗑️ Delete tasks
 - 📋 Display all current tasks
+- 🔁 Update existing tasks (change name or deadline)
 - ❌ Exit the program
 
 ---
@@ -28,7 +29,8 @@ Choose an operation:
 1. Add task
 2. Delete task
 3. Display task
-4. Exit
+4. Update task
+5. Exit
 
 Enter your choice:
 
@@ -42,6 +44,15 @@ Enter your choice:
 - SimpleDateFormat
 
 ---
+
+📌 Notes
+
+Dates must be entered in the format dd-MM-yyyy.
+
+Input validation is handled to prevent incorrect or invalid operations.
+
+Updating allows partial changes (either name or deadline, or both).
+
 
 ## Author
 
