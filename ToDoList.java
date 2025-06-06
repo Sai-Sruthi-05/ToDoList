@@ -25,7 +25,29 @@ class ToDoList{
         }else if(choice ==3){
             display(taskNames,taskDeadLines);
 
-        }else if(choice==4){
+        }else if(choice == 4){
+            if(taskNames.isEmpty()){
+                System.out.println("There is no task to update.");
+                return null;
+            }
+            display(taskNames, taskDeadLines);
+            System.out.println("Enter task number to update: ");
+            int taskNumber=Integer.parseInt(sc.nextLine());
+
+            if (taskNumber <= 0 || taskNumber > taskNames.size()) {
+            System.out.println("Invalid task number!\n");
+            return null;
+            }
+
+            System.out.print("Enter new task name (or press Enter to keep unchanged): ");
+            String newName = sc.nextLine();
+
+            System.out.print("Enter new deadline (dd-mm-yyyy) (or press Enter to keep unchanged): ");
+            String newDeadline = sc.nextLine();
+
+            update(taskNames, taskDeadLines, taskNumber, newName, newDeadline);
+
+        }else if(choice==5){
             return "Goodbye! exiting the application.";
 
         }else{
@@ -83,6 +105,23 @@ class ToDoList{
             return null;
         }
     }
+    public static void update(ArrayList<String> taskNames, ArrayList<Date> taskDeadlines,
+                              int taskNumber, String newName, String newDeadline) {
+            int index = taskNumber - 1;
+
+            if (!newName.trim().isEmpty()) {
+            taskNames.set(index, newName);
+    }
+
+            if (!newDeadline.trim().isEmpty()) {
+            Date updatedDate = validateDate(newDeadline);
+            if (updatedDate != null) {
+            taskDeadlines.set(index, updatedDate);
+        }
+    }
+
+    System.out.println("Task updated successfully!\n");
+}
     public static void main(String[] args){
         ArrayList<String> taskNames=new ArrayList<>();
         ArrayList<Date> taskDeadLines=new ArrayList<>();
@@ -92,21 +131,26 @@ class ToDoList{
         System.out.println("Welcome to TO-DO Application!\n");
 
         while(true){
-            System.out.println("Choose an operation: \n");
+            System.out.println("\nChoose an operation: \n");
             System.out.println("1. Add task");
             System.out.println("2. Delete task");
             System.out.println("3. Display task");
-            System.out.println("4. Exit");
+            System.out.println("4. Update task");
+            System.out.println("5. Exit");
 
             System.out.println("\nEnter your choice: ");
-            int choice=Integer.parseInt(sc.nextLine());
+            try {
+            int choice = Integer.parseInt(sc.nextLine());
+            String value = userChoice(choice, taskNames, taskDeadLines, sc);
 
-            String value=userChoice(choice,taskNames,taskDeadLines,sc);
-
-            if("Goodbye! exiting the application.".equals(value)){
+        if ("Goodbye! exiting the application.".equals(value)) {
             System.out.println(value);
             break;
+        }
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid number.\n");
+                }
+
             }
         }
     }
-}
