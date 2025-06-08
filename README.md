@@ -1,6 +1,7 @@
 # 📝 To-Do List (Java Console Application)
 
-This is a simple command-line To-Do List application built using Java. It allows users to:
+This is a simple **command-line To-Do List application** built using Java. It allows users to:
+
 - ✅ Add tasks with deadlines
 - 🗑️ Delete tasks
 - 📋 Display all current tasks
@@ -13,9 +14,11 @@ This is a simple command-line To-Do List application built using Java. It allows
 
 1. Open your terminal
 2. Go to the folder where your `ToDoList.java` file is saved
-3. Compile the code using:
+3. Compile the code using
+   ```bash
    javac ToDoList.java
-4. Run the program using:
+4. Run the program using
+   ```bash
    java ToDoList
 
 ---
@@ -45,7 +48,7 @@ Enter your choice:
 
 ---
 
-📌 Notes
+## 📌 Notes
 
 Dates must be entered in the format dd-MM-yyyy.
 
